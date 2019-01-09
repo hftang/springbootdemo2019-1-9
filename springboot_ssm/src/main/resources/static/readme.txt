@@ -1,0 +1,1 @@
+ALTER TABLE tb_user CHANGE userName username VARCHAR(32)
