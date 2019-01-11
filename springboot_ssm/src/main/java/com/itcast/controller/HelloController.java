@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,9 +27,12 @@ public class HelloController {
     private UserService userService;
 
     @GetMapping("hello")
-    public User hello() {
+    public String hello(Model model) {
         User user = this.userService.queryById(1);
-        return user;
+        List<User> users=new ArrayList<>();
+        users.add(user);
+        model.addAttribute("users",users);
+        return "users";
     }
 
 

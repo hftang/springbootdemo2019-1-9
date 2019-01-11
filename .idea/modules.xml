@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo/customer/customer.iml" filepath="$PROJECT_DIR$/demo/customer/customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eurekaservice/eurekaservice.iml" filepath="$PROJECT_DIR$/eurekaservice/eurekaservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" filepath="$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootdemo/springbootdemo.iml" filepath="$PROJECT_DIR$/springbootdemo/springbootdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/user-service/user-service.iml" filepath="$PROJECT_DIR$/demo/user-service/user-service.iml" />
     </modules>
   </component>
 </project>
