@@ -3,8 +3,39 @@ server:
 spring:
   application:
     name: user-consumer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true  #开启重试
 
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5 # 消费端 需不需要拉取 看配置  获取周期这里设置 5s 生产环境不需要配置 使用默认值
+#开启 feign hystix
+ #开启 feign的熔断
+feign:
+  hystrix:
+    enabled: true
+
+#user-service:  不需要配置是哪个service 是全局的负载均衡 整合feign
+ribbon:
+  #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #修改负载均衡策略#
+  ConnectTimeout: 250 #robbon 连接超时时间是250ms 毫秒
+  ReadTimeout: 1000 # 读取超时时间
+  okToRetryOnAllOperations: true #是否是对所有操作进行重试
+  MaxAutoRetriesNextServer: 1 #切换实例的 重试次数
+  MaxAutoRetries: 1 #对当前实例重试次数
+logging:
+  level:
+    org.springframework: debug
+    cn.itcast: debug
+#配置熔断的时间
+
+hystrix:
+  command:
+    execution:
+      isolation:
+        thread:
+          timeoutInMillisecond: 6000

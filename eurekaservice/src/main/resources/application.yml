@@ -8,7 +8,10 @@ spring:
     #配置 eureka相关的
 eureka:
   client:
-    register-with-eureka: false   #不把自己作为eureka服务注册
-    fetch-registry: false  #不需要拉取服务列表
+    register-with-eureka: false   #不把自己作为eureka服务注册 搭建成集群的时候要设置为TRUE
+    fetch-registry: false  #不需要拉取服务列表 搭建成集群的时候要设置为TRUE
     service-url:      #配置服务的地址
-      defaultZone: http://127.0.0.1:${server.port}/eureka
+      defaultZone: http://127.0.0.1:10086/eureka
+  server:
+    eviction-interval-timer-in-ms: 5000 #每隔5s把注册表里无用的服务注册删除一次
+    enable-self-preservation: false # 自我保护 关闭 生产时 都使用默认值

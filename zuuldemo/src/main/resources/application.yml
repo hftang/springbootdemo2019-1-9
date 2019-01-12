@@ -1,0 +1,34 @@
+server:
+  port: 10010  #对外暴露的端口号
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  retryable: true #重试
+  prefix: /api #路由前缀
+  routes:
+    user-service: /user/**  #/user-service/** 这个路径 映射 user-service这个服务 在eureka中找
+      #path: /user-service/**  #要拦截的规则
+      #url: http://127.0.0.1:8082 #要代理的服务
+    # serviceId: user-service #去找eureka 中的服务名字 就是服务id
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+ribbon:
+  ConnectTimeout: 250
+  ReadTimeout: 2000
+  okToRetryOnAllOperations: true #是否对所有操作进行重试
+  MaxAutoRetriesNextServer: 2 #同一服务器的不同实例的重试次数
+  MaxAutoRetries: 1 #同一实例的重试次数
+
+hystrix:
+  command:
+    execution:
+      isolation:
+        thread:
+          timeoutInMillisecond: 6000 #熔断超时时长 6000ms
+
