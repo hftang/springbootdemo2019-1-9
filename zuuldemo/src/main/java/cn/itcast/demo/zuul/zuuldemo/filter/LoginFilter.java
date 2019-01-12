@@ -30,7 +30,7 @@ public class LoginFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        //是否执行拦截
+        //是否执行拦截 的
         return true;
     }
 
